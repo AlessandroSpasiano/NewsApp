@@ -9,21 +9,44 @@ android {
     buildToolsVersion rootProject.ext.buildToolVersion
 
     defaultConfig {
+        manifestPlaceholders = [hostname: "it.alexs"]
         applicationId "it.alexs.newsapp"
-        minSdkVersion minSdkVersion
-        targetSdkVersion targetSdkVersion
-        versionCode versionCode
-        versionName versionName
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode rootProject.ext.versionCode
+        versionName rootProject.ext.versionName
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
+
 
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
         }
+
+        debug {
+            applicationIdSuffix ".debug"
+            debuggable true
+        }
     }
+
+    flavorDimensions "default"
+    productFlavors {
+        demo {
+            dimension "default"
+            applicationIdSuffix ".demo"
+            versionNameSuffix "-demo"
+        }
+
+        full {
+            dimension "default"
+            applicationIdSuffix ".full"
+            versionNameSuffix "-full"
+        }
+    }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -55,6 +78,9 @@ dependencies {
 
     // Coroutine kotlin
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:${coroutineAndroidVersion}"
+
+    debugImplementation "androidx.lifecycle:lifecycle-viewmodel-ktx:${viewModelKtxVersion}"
+    debugImplementation "androidx.lifecycle:lifecycle-livedata-ktx:${liveDataKtxVersion}"
 
     testImplementation "junit:junit:${junitVersion}"
     androidTestImplementation "androidx.test.ext:junit:${extJunitVersion}"
