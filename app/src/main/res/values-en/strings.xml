@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">NewsApp</string>
+    <string name="news_author">of %1s</string>
+    <string name="news_title">Title</string>
+    <string name="news_description">Description</string>
+</resources>
