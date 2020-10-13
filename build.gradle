@@ -6,7 +6,7 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath "com.android.tools.build:gradle:4.1.0-rc03"
+        classpath 'com.android.tools.build:gradle:4.1.0'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
 
         // NOTE: Do not place your application dependencies here; they belong
@@ -54,7 +54,8 @@ ext {
     junitVersion = "4.13.1"
     extJunitVersion = "1.1.2"
     espressoCoreVersion = "3.3.0"
-    $minSdkVersion = 30
+    daggerVersion = '2.29.1'
+    loggingVersion = '4.9.0'
 }
 
 task clean(type: Delete) {

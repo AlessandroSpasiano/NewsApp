@@ -3,14 +3,12 @@ package it.alexs.newsapp.ui
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import it.alexs.newsapp.config.AppConfig
+import com.google.android.material.snackbar.Snackbar
+import it.alexs.newsapp.NewsApplication
+import it.alexs.newsapp.adapter.NewsAdapter
 import it.alexs.newsapp.databinding.ActivityNewsBinding
-import it.alexs.newsapp.model.Article
-import it.alexs.newsapp.service.NewsService
-import kotlinx.coroutines.*
-import okhttp3.OkHttpClient
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
+import it.alexs.newsapp.model.ResultWrapper
+import javax.inject.Inject
 
 class NewsActivity : AppCompatActivity() {
 
@@ -20,29 +18,19 @@ class NewsActivity : AppCompatActivity() {
 
     private val adapter by lazy { NewsAdapter() }
 
+    @Inject lateinit var viewModel: NewsViewModel
+
     override fun onCreate(savedInstanceState: Bundle?) {
+        (applicationContext as NewsApplication).appComponent.inject(this)
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
-        val client = OkHttpClient.Builder()
-            .addInterceptor { chain ->
-                val original = chain.request()
-                val request = original.newBuilder()
-                    .addHeader("X-Api-Key", AppConfig.API_KEY)
-                    .method(original.method(), original.body())
-                    .build()
-                chain.proceed(request)
-            }
-            .build()
-        val retrofit = Retrofit.Builder()
-            .baseUrl(AppConfig.BASE_URL)
-            .addConverterFactory(GsonConverterFactory.create())
-            .client(client)
-            .build()
-
-        val newsService = retrofit.create(NewsService::class.java)
         setRecyclerView()
-        getNews(newsService)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        registerObserves()
     }
 
     private fun setRecyclerView(){
@@ -50,11 +38,12 @@ class NewsActivity : AppCompatActivity() {
         binding.news.adapter = adapter
     }
 
-    private fun getNews(service: NewsService) {
-        runBlocking {
-            adapter.submitList(service.getTopHeadlines(
-                "it"
-            ).articles)
+    private fun registerObserves() {
+        viewModel.getTopHeadlinse("it").observe(this) {
+            when(it){
+                is ResultWrapper.Success -> adapter.submitList(it.value.articles)
+                is ResultWrapper.Error -> Snackbar.make(binding.root, it.error.message, Snackbar.LENGTH_INDEFINITE).show()
+            }
         }
     }
 }

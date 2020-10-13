@@ -4,6 +4,8 @@ plugins {
     id "kotlin-android-extensions"
 }
 
+apply plugin: "kotlin-kapt"
+
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
     buildToolsVersion rootProject.ext.buildToolVersion
@@ -63,6 +65,11 @@ dependencies {
 
     // Coroutine kotlin
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:${coroutineAndroidVersion}"
+
+    // Dagger
+    implementation "com.google.dagger:dagger:${daggerVersion}"
+    implementation "com.squareup.okhttp3:logging-interceptor:${loggingVersion}"
+    kapt "com.google.dagger:dagger-compiler:${daggerVersion}"
 
     debugImplementation "androidx.lifecycle:lifecycle-viewmodel-ktx:${viewModelKtxVersion}"
     debugImplementation "androidx.lifecycle:lifecycle-livedata-ktx:${liveDataKtxVersion}"
