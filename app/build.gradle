@@ -18,7 +18,7 @@ android {
         versionCode rootProject.ext.versionCode
         versionName rootProject.ext.versionName
 
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "it.alexs.newsapp.NewsApplicationTestRunner"
     }
 
 
@@ -30,9 +30,19 @@ android {
 
         debug {
             applicationIdSuffix ".debug"
+            versionNameSuffix "-debug"
             debuggable true
         }
+
+        staging {
+            initWith debug
+            manifestPlaceholders = [hostname: "internal.alexs"]
+            applicationIdSuffix ".staging"
+            versionNameSuffix "-staging"
+        }
     }
+
+    testBuildType = "staging"
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -44,6 +54,13 @@ android {
 
     buildFeatures {
         viewBinding true
+    }
+    sourceSets {
+        staging {
+            java {
+                srcDirs 'src\\staging\\java'
+            }
+        }
     }
 }
 
@@ -68,13 +85,25 @@ dependencies {
 
     // Dagger
     implementation "com.google.dagger:dagger:${daggerVersion}"
-    implementation "com.squareup.okhttp3:logging-interceptor:${loggingVersion}"
     kapt "com.google.dagger:dagger-compiler:${daggerVersion}"
 
-    debugImplementation "androidx.lifecycle:lifecycle-viewmodel-ktx:${viewModelKtxVersion}"
-    debugImplementation "androidx.lifecycle:lifecycle-livedata-ktx:${liveDataKtxVersion}"
+    // OkHttp
+    implementation "com.squareup.okhttp3:logging-interceptor:${loggingVersion}"
+
+    // Timber
+    implementation "com.jakewharton.timber:timber:${timberVersion}"
+
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:${viewModelKtxVersion}"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:${liveDataKtxVersion}"
 
     testImplementation "junit:junit:${junitVersion}"
+    testImplementation "org.mockito:mockito-core:${mockitoCoreVersion}"
+    testImplementation "androidx.arch.core:core-testing:${testCoreVersion}"
+    testImplementation "com.google.truth:truth:${trhutVersion}"
+    androidTestImplementation "androidx.test:rules:${testRuleVersion}"
     androidTestImplementation "androidx.test.ext:junit:${extJunitVersion}"
     androidTestImplementation "androidx.test.espresso:espresso-core:${espressoCoreVersion}"
+    androidTestImplementation "androidx.test.espresso:espresso-contrib:${espressoCoreVersion}"
+    androidTestImplementation "androidx.test:runner:${testRunnerVersion}"
+
 }

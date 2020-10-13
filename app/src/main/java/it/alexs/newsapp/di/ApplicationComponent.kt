@@ -2,8 +2,9 @@ package it.alexs.newsapp.di
 
 import dagger.Component
 import it.alexs.newsapp.ui.NewsActivity
+import javax.inject.Singleton
 
-@AppScope
+@Singleton
 @Component(modules = [NetworkModule::class])
 interface ApplicationComponent {
 
