@@ -32,21 +32,6 @@ android {
         }
     }
 
-    flavorDimensions "default"
-    productFlavors {
-        demo {
-            dimension "default"
-            applicationIdSuffix ".demo"
-            versionNameSuffix "-demo"
-        }
-
-        full {
-            dimension "default"
-            applicationIdSuffix ".full"
-            versionNameSuffix "-full"
-        }
-    }
-
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
