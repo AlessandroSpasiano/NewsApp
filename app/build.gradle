@@ -99,7 +99,7 @@ dependencies {
     testImplementation "junit:junit:${junitVersion}"
     testImplementation "org.mockito:mockito-core:${mockitoCoreVersion}"
     testImplementation "androidx.arch.core:core-testing:${testCoreVersion}"
-    testImplementation "com.google.truth:truth:${trhutVersion}"
+    testImplementation "com.google.truth:truth:${truthVersion}"
     androidTestImplementation "androidx.test:rules:${testRuleVersion}"
     androidTestImplementation "androidx.test.ext:junit:${extJunitVersion}"
     androidTestImplementation "androidx.test.espresso:espresso-core:${espressoCoreVersion}"
