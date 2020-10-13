@@ -54,7 +54,8 @@ ext {
     junitVersion = "4.13.1"
     extJunitVersion = "1.1.2"
     espressoCoreVersion = "3.3.0"
-    $minSdkVersion = 30
+    daggerVersion = '2.29.1'
+    loggingVersion = '4.9.0'
 }
 
 task clean(type: Delete) {

@@ -1,4 +1,4 @@
-package it.alexs.newsapp.ui
+package it.alexs.newsapp.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
