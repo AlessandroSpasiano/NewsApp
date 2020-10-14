@@ -4,7 +4,7 @@ plugins {
     id "kotlin-android-extensions"
 }
 
-apply plugin: "kotlin-kapt"
+
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
     buildToolsVersion rootProject.ext.buildToolVersion
@@ -16,27 +16,15 @@ android {
         versionCode rootProject.ext.versionCode
         versionName rootProject.ext.versionName
     }
-    buildTypes {
-        staging {
-        }
-    }
 }
 
 dependencies {
 
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:${kotlinVersion}"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation "androidx.core:core-ktx:${androidxCoreKtxVersion}"
 
     //Retrofit
     implementation "com.squareup.retrofit2:retrofit:${retrofitVersion}"
     implementation "com.squareup.retrofit2:converter-gson:${retrofitVersion}"
 
-    //Google
-    implementation "com.google.code.gson:gson:${gsonVersion}"
-
-    // Coroutine kotlin
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:${coroutineAndroidVersion}"
-
-    // Dagger
-    implementation "com.google.dagger:dagger:${daggerVersion}"
-    kapt "com.google.dagger:dagger-compiler:${daggerVersion}"
 }

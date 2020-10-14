@@ -1,3 +1,4 @@
+include ':common-library'
 include ':mvvm-library'
 include ':news-library'
 include ':app'

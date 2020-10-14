@@ -62,13 +62,14 @@ android {
             }
         }
     }
+    dynamicFeatures = []
 }
 
 dependencies {
     implementation project(":news-library")
     implementation project(":mvvm-library")
 
-    
+
     implementation "org.jetbrains.kotlin:kotlin-stdlib:${kotlinVersion}"
     implementation "androidx.core:core-ktx:${androidxCoreKtxVersion}"
     implementation "androidx.appcompat:appcompat:${androidxAppCompatVersion}"

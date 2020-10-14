@@ -1,4 +1,4 @@
-package it.alexs.newsapp.model
+package it.alexs.common_library.model
 
 sealed class ResultWrapper<out T> {
     data class Success<out T>(val value: T): ResultWrapper<T>()

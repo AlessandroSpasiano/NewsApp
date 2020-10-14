@@ -16,6 +16,10 @@ android {
         versionCode rootProject.ext.versionCode
         versionName rootProject.ext.versionName
     }
+    buildTypes {
+        staging {
+        }
+    }
 }
 
 dependencies {

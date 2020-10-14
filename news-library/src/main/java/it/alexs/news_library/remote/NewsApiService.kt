@@ -4,7 +4,7 @@ import it.alexs.news_library.model.NewsWrapper
 import retrofit2.http.GET
 import retrofit2.http.Query
 
-interface NewsRemoteDataSource {
+interface NewsApiService {
 
     @GET("top-headlines")
     suspend fun getTopHeadlines(@Query("country") country: String): NewsWrapper
