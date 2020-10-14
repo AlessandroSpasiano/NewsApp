@@ -23,7 +23,6 @@ android {
 }
 
 dependencies {
-
     implementation "org.jetbrains.kotlin:kotlin-stdlib:${kotlinVersion}"
     // Dagger
     implementation "com.google.dagger:dagger:${daggerVersion}"
