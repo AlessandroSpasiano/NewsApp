@@ -23,6 +23,19 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+
+        debug {
+            applicationIdSuffix ".debug"
+            versionNameSuffix "-debug"
+            debuggable true
+        }
+
+        staging {
+            initWith debug
+            manifestPlaceholders = [hostname: "internal.alexs"]
+            applicationIdSuffix ".staging"
+            versionNameSuffix "-staging"
+        }
     }
 
     compileOptions {
@@ -40,9 +53,9 @@ android {
 
 dependencies {
     implementation project(path: ':app')
-    implementation project(path: ':mvvm-library')
-    implementation project(path: ':news-library')
-    implementation project(path: ':common-library')
+    implementation project(path: ':mvvm-library', configuration: 'default')
+    implementation project(path: ':news-library', configuration: 'default')
+    implementation project(path: ':common-library', configuration: 'default')
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib:${kotlinVersion}"
     implementation "androidx.core:core-ktx:${androidxCoreKtxVersion}"
