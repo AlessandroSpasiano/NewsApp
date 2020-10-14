@@ -2,11 +2,13 @@ package it.alexs.newsapp.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
 import it.alexs.newsapp.NewsApplication
 import it.alexs.newsapp.adapter.NewsAdapter
 import it.alexs.newsapp.databinding.ActivityNewsBinding
+import it.alexs.newsapp.di.DaggerViewModelFactory
 import it.alexs.newsapp.model.ResultWrapper
 import javax.inject.Inject
 
@@ -17,8 +19,11 @@ class NewsActivity : AppCompatActivity() {
     }
 
     private val adapter by lazy { NewsAdapter() }
+    private val viewModel by lazy {
+        ViewModelProvider(this, factory).get(NewsViewModel::class.java)
+    }
 
-    @Inject lateinit var viewModel: NewsViewModel
+    @Inject lateinit var factory: DaggerViewModelFactory
 
     override fun onCreate(savedInstanceState: Bundle?) {
         (applicationContext as NewsApplication).appComponent.inject(this)

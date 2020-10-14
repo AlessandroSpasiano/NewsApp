@@ -5,7 +5,7 @@ import it.alexs.newsapp.ui.NewsActivity
 import javax.inject.Singleton
 
 @Singleton
-@Component(modules = [NetworkModule::class])
+@Component(modules = [NetworkModule::class, NewsViewModelModule::class])
 interface ApplicationComponent {
 
     fun inject(activity: NewsActivity)
