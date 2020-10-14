@@ -5,9 +5,9 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import it.alexs.news_library.model.Article
 import it.alexs.newsapp.R
 import it.alexs.newsapp.databinding.NewsItemBinding
-import it.alexs.newsapp.model.Article
 
 class NewsAdapter: ListAdapter<Article, NewsAdapter.NewsViewHolder>(DIFF_CALLBACK) {
     companion object{

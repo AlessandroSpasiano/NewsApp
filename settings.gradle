@@ -1,2 +1,4 @@
+include ':mvvm-library'
+include ':news-library'
 include ':app'
 rootProject.name = "NewsApp"

@@ -5,10 +5,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
+import it.alexs.mvvm_library.ViewModelFactory
 import it.alexs.newsapp.NewsApplication
 import it.alexs.newsapp.adapter.NewsAdapter
 import it.alexs.newsapp.databinding.ActivityNewsBinding
-import it.alexs.newsapp.di.DaggerViewModelFactory
 import it.alexs.newsapp.model.ResultWrapper
 import javax.inject.Inject
 
@@ -23,7 +23,7 @@ class NewsActivity : AppCompatActivity() {
         ViewModelProvider(this, factory).get(NewsViewModel::class.java)
     }
 
-    @Inject lateinit var factory: DaggerViewModelFactory
+    @Inject lateinit var factory: ViewModelFactory
 
     override fun onCreate(savedInstanceState: Bundle?) {
         (applicationContext as NewsApplication).appComponent.inject(this)

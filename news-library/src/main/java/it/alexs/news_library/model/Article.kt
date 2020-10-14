@@ -1,13 +1,12 @@
-package it.alexs.newsapp.model
-
+package it.alexs.news_library.model
 
 import android.os.Parcelable
-import kotlinx.android.parcel.Parcelize
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
+import kotlinx.android.parcel.Parcelize
 
 @Parcelize
-data class Article(
+class Article(
     @Expose
     @SerializedName("author")
     var author: String? = null,

@@ -3,7 +3,6 @@ package it.alexs.newsapp.di
 import dagger.Module
 import dagger.Provides
 import it.alexs.newsapp.config.AppConfig
-import it.alexs.newsapp.service.NewsApiService
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -37,11 +36,5 @@ class NetworkModule {
             .addConverterFactory(GsonConverterFactory.create())
             .client(okHttpClient)
             .build()
-    }
-
-    @Singleton
-    @Provides
-    fun provideNewsApiService(retrofit: Retrofit): NewsApiService{
-        return retrofit.create(NewsApiService::class.java)
     }
 }
