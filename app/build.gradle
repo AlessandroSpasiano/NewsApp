@@ -11,7 +11,6 @@ android {
     buildToolsVersion rootProject.ext.buildToolVersion
 
     defaultConfig {
-        manifestPlaceholders = [hostname: "it.alexs"]
         applicationId "it.alexs.newsapp"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
@@ -29,16 +28,14 @@ android {
         }
 
         debug {
-            applicationIdSuffix ".debug"
             versionNameSuffix "-debug"
             debuggable true
         }
 
         staging {
             initWith debug
-            manifestPlaceholders = [hostname: "internal.alexs"]
-            applicationIdSuffix ".staging"
             versionNameSuffix "-staging"
+            matchingFallbacks = ["debug"]
         }
     }
 
@@ -66,10 +63,9 @@ android {
 }
 
 dependencies {
-    implementation project(path: ":common-library", configuration: 'default')
-    implementation project(path: ":news-library", configuration: 'default')
-    implementation project(path: ":mvvm-library", configuration: 'default')
-    implementation project(path: ":ui-library", configuration: 'default')
+    implementation project(path: ":common-library")
+    implementation project(path: ":news-library")
+    implementation project(path: ":ui-library")
 
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib:${kotlinVersion}"

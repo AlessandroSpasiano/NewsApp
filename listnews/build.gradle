@@ -15,7 +15,7 @@ android {
         targetSdkVersion rootProject.ext.targetSdkVersion
 
 
-        testInstrumentationRunner "it.alexs.newsapp.NewsApplicationTestRunner"
+        testInstrumentationRunner "it.alexs.newsapplistnews.ListNewsTestRunner"
     }
 
     buildTypes {
@@ -25,18 +25,18 @@ android {
         }
 
         debug {
-            applicationIdSuffix ".debug"
             versionNameSuffix "-debug"
             debuggable true
         }
 
         staging {
             initWith debug
-            manifestPlaceholders = [hostname: "internal.alexs"]
-            applicationIdSuffix ".staging"
             versionNameSuffix "-staging"
+            matchingFallbacks = ["debug"]
         }
     }
+
+    testBuildType = "staging"
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -49,13 +49,20 @@ android {
     buildFeatures {
         viewBinding true
     }
+    sourceSets {
+        staging {
+            java {
+                srcDirs 'src\\staging\\java'
+            }
+        }
+    }
 }
 
 dependencies {
     implementation project(path: ':app')
-    implementation project(path: ':mvvm-library', configuration: 'default')
-    implementation project(path: ':news-library', configuration: 'default')
-    implementation project(path: ':common-library', configuration: 'default')
+    implementation project(path: ':mvvm-library')
+    implementation project(path: ':news-library')
+    implementation project(path: ':common-library')
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib:${kotlinVersion}"
     implementation "androidx.core:core-ktx:${androidxCoreKtxVersion}"

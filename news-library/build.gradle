@@ -10,7 +10,6 @@ android {
     buildToolsVersion rootProject.ext.buildToolVersion
 
     defaultConfig {
-        manifestPlaceholders = [hostname: "it.alexs"]
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode rootProject.ext.versionCode
@@ -21,6 +20,21 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+
+        debug {
+            debuggable true
+        }
+
+        staging {
+            initWith debug
+        }
+    }
+    sourceSets {
+        staging {
+            java {
+                srcDirs 'src\\staging\\java'
+            }
         }
     }
 }

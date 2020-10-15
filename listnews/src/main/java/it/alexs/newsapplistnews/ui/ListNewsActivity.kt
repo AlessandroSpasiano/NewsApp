@@ -5,12 +5,12 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
-import it.alexs.common_library.model.ResultWrapper
-import it.alexs.mvvm_library.ViewModelFactory
 import it.alexs.newsapp.NewsApplication
+import it.alexs.newsappcommon_library.model.ResultWrapper
 import it.alexs.newsapplistnews.adapter.NewsAdapter
 import it.alexs.newsapplistnews.databinding.ActivityListNewsBinding
 import it.alexs.newsapplistnews.di.DaggerListNewsComponent
+import it.alexs.newsappmvvm_library.ViewModelFactory
 import javax.inject.Inject
 
 class ListNewsActivity : AppCompatActivity() {
