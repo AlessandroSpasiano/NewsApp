@@ -1,7 +1,7 @@
 package it.alexs.newsapplistnews.di
 
 import dagger.Component
-import it.alexs.newsappcore_library.di.CoreLibraryComponent
+import it.alexs.newsapp.di.ApplicationComponent
 import it.alexs.newsapplistnews.ui.ListNewsActivity
 import it.alexs.newsappmvvm_library.scope.ModuleScope
 import it.alexs.newsappnews_library.NewsModule
@@ -10,13 +10,12 @@ import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 
 @ModuleScope
-@Component(dependencies = [CoreLibraryComponent::class], modules = [ListNewsViewModelModule::class, NewsModule::class])
+@Component(dependencies = [ApplicationComponent::class], modules = [ListNewsViewModelModule::class, NewsModule::class])
 interface ListNewsComponent {
 
-    @Component.Builder
-    interface Builder {
-        fun build(): ListNewsComponent
-        fun provideCoreLibraryComponent(component: CoreLibraryComponent): Builder
+    @Component.Factory
+    interface Factory {
+        fun create(appCompat: ApplicationComponent): ListNewsComponent
     }
 
     fun inject(activity: ListNewsActivity)

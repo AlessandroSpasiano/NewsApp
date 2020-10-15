@@ -60,7 +60,6 @@ android {
 
 dependencies {
     implementation project(path: ':app')
-    implementation project(path: ':core-library')
     implementation project(path: ':mvvm-library')
     implementation project(path: ':news-library')
     implementation project(path: ':common-library')

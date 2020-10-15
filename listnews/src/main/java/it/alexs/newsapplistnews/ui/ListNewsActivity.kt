@@ -26,9 +26,8 @@ class ListNewsActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        DaggerListNewsComponent.builder()
-            .provideCoreLibraryComponent((applicationContext as NewsApplication).coreLibraryComponent())
-            .build()
+        DaggerListNewsComponent.factory()
+            .create((applicationContext as NewsApplication).appComponent)
             .inject(this)
         setContentView(binding.root)
         setRecyclerView()

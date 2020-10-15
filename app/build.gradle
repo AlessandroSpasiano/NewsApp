@@ -63,7 +63,6 @@ android {
 }
 
 dependencies {
-    implementation project(path: ":core-library")
     implementation project(path: ":common-library")
     implementation project(path: ":mvvm-library")
     implementation project(path: ":ui-library")
