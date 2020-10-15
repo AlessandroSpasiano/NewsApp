@@ -1,8 +1,8 @@
-package it.alexs.news_library
+package it.alexs.newsappnews_library
 
 import dagger.Module
 import dagger.Provides
-import it.alexs.news_library.remote.NewsApiService
+import it.alexs.newsappnews_library.remote.NewsApiService
 import retrofit2.Retrofit
 import javax.inject.Singleton
 
@@ -11,7 +11,7 @@ class NewsModule {
 
     @Singleton
     @Provides
-    fun provideNewsRemoteDataService(retrofit: Retrofit): NewsApiService{
+    fun provideNewsRemoteDataService(retrofit: Retrofit): NewsApiService {
         return retrofit.create(NewsApiService::class.java)
     }
 }

@@ -3,7 +3,7 @@ package it.alexs.newsapp.di
 import dagger.Module
 import dagger.Provides
 import it.alexs.news_ibrary.remote.FakeNewsApiService
-import it.alexs.news_library.remote.NewsApiService
+import it.alexs.newsappnews_library.remote.NewsApiService
 import javax.inject.Singleton
 
 @Module

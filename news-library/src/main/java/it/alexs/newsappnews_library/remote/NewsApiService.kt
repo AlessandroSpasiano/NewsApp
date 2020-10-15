@@ -1,6 +1,6 @@
-package it.alexs.news_library.remote
+package it.alexs.newsappnews_library.remote
 
-import it.alexs.news_library.model.NewsWrapper
+import it.alexs.newsappnews_library.model.NewsWrapper
 import retrofit2.http.GET
 import retrofit2.http.Query
 

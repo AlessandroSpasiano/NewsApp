@@ -1,8 +1,8 @@
 package it.alexs.news_ibrary.remote
 
-import it.alexs.news_library.model.Article
-import it.alexs.news_library.model.NewsWrapper
-import it.alexs.news_library.remote.NewsApiService
+import it.alexs.newsappnews_library.model.Article
+import it.alexs.newsappnews_library.model.NewsWrapper
+import it.alexs.newsappnews_library.remote.NewsApiService
 
 class FakeNewsApiService: NewsApiService {
     override suspend fun getTopHeadlines(country: String): NewsWrapper {

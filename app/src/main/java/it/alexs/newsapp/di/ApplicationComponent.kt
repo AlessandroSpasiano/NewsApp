@@ -1,8 +1,8 @@
 package it.alexs.newsapp.di
 
 import dagger.Component
-import it.alexs.news_library.NewsModule
-import it.alexs.news_library.repository.NewsRepository
+import it.alexs.newsappnews_library.NewsModule
+import it.alexs.newsappnews_library.repository.NewsRepository
 import javax.inject.Singleton
 
 @Singleton

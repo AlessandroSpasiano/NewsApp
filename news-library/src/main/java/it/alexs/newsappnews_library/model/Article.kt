@@ -1,4 +1,4 @@
-package it.alexs.news_library.model
+package it.alexs.newsappnews_library.model
 
 import android.os.Parcelable
 import com.google.gson.annotations.Expose
