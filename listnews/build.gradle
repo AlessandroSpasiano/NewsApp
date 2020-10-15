@@ -1,0 +1,97 @@
+plugins {
+    id 'com.android.dynamic-feature'
+    id "kotlin-android"
+    id "kotlin-android-extensions"
+}
+
+apply plugin: "kotlin-kapt"
+
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolVersion
+
+    defaultConfig {
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+
+
+        testInstrumentationRunner "it.alexs.newsapplistnews.ListNewsTestRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+
+        debug {
+            versionNameSuffix "-debug"
+            debuggable true
+        }
+
+        staging {
+            initWith debug
+            versionNameSuffix "-staging"
+            matchingFallbacks = ["debug"]
+        }
+    }
+
+    testBuildType = "staging"
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+
+    buildFeatures {
+        viewBinding true
+    }
+    sourceSets {
+        staging {
+            java {
+                srcDirs 'src\\staging\\java'
+            }
+        }
+    }
+}
+
+dependencies {
+    implementation project(path: ':app')
+    implementation project(path: ':core-library')
+    implementation project(path: ':mvvm-library')
+    implementation project(path: ':news-library')
+    implementation project(path: ':common-library')
+
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:${kotlinVersion}"
+    implementation "androidx.core:core-ktx:${androidxCoreKtxVersion}"
+    implementation "androidx.appcompat:appcompat:${androidxAppCompatVersion}"
+    implementation "com.google.android.material:material:${materialVersion}"
+    implementation "androidx.constraintlayout:constraintlayout:${constraintLayoutVersion}"
+    implementation "androidx.swiperefreshlayout:swiperefreshlayout:${swiperefreshLayoutversion}"
+
+    implementation "com.google.dagger:dagger:${daggerVersion}"
+    kapt "com.google.dagger:dagger-compiler:${daggerVersion}"
+
+    //Retrofit
+    implementation "com.squareup.retrofit2:retrofit:${retrofitVersion}"
+    implementation "com.squareup.retrofit2:converter-gson:${retrofitVersion}"
+
+    // OkHttp
+    implementation "com.squareup.okhttp3:logging-interceptor:${loggingVersion}"
+
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:${viewModelKtxVersion}"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:${liveDataKtxVersion}"
+
+    testImplementation "junit:junit:${junitVersion}"
+    testImplementation "org.mockito:mockito-core:${mockitoCoreVersion}"
+    testImplementation "androidx.arch.core:core-testing:${testCoreVersion}"
+    testImplementation "com.google.truth:truth:${truthVersion}"
+    androidTestImplementation "androidx.test:rules:${testRuleVersion}"
+    androidTestImplementation "androidx.test.ext:junit:${extJunitVersion}"
+    androidTestImplementation "androidx.test.espresso:espresso-core:${espressoCoreVersion}"
+    androidTestImplementation "androidx.test.espresso:espresso-contrib:${espressoCoreVersion}"
+    androidTestImplementation "androidx.test:runner:${testRunnerVersion}"
+}

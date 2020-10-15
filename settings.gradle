@@ -1,2 +1,9 @@
+include ':core-library'
+include ':ui-library'
+include ':ui-library'
+include ':listnews'
+include ':common-library'
+include ':mvvm-library'
+include ':news-library'
 include ':app'
 rootProject.name = "NewsApp"

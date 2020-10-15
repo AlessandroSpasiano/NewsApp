@@ -1,12 +1,16 @@
 package it.alexs.newsapp.di
 
 import dagger.Component
-import it.alexs.newsapp.ui.NewsActivity
-import javax.inject.Singleton
+import it.alexs.newsappcore_library.di.CoreLibraryComponent
+import it.alexs.newsappmvvm_library.scope.AppScope
 
-@Singleton
-@Component(modules = [NetworkModule::class, NewsViewModelModule::class])
+@AppScope
+@Component(dependencies = [CoreLibraryComponent::class])
 interface ApplicationComponent {
 
-    fun inject(activity: NewsActivity)
+    @Component.Builder
+    interface Builder {
+        fun build(): ApplicationComponent
+        fun coreLibraryComponent(coreLibraryComponent: CoreLibraryComponent): Builder
+    }
 }

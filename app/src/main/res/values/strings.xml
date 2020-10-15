@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">NewsApp</string>
-    <string name="news_author">di %1s</string>
-    <string name="news_title">Titolo</string>
-    <string name="news_description">Descrizione</string>
+    <string name="show_news">Show news</string>
+    <string name="title_listnews">List News</string>
 </resources>
