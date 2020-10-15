@@ -1,9 +1,9 @@
 package it.alexs.newsapp.di
 
 import dagger.Component
-import javax.inject.Singleton
+import it.alexs.newsappmvvm_library.scope.AppScope
 
-@Singleton
+@AppScope
 @Component
 interface TestApplicationComponent: ApplicationComponent {
 }

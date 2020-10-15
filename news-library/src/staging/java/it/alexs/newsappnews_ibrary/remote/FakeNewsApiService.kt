@@ -1,4 +1,4 @@
-package it.alexs.news_ibrary.remote
+package it.alexs.newsappnews_ibrary.remote
 
 import it.alexs.newsappnews_library.model.Article
 import it.alexs.newsappnews_library.model.NewsWrapper
