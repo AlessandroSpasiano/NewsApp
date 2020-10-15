@@ -28,8 +28,20 @@ android {
 
         staging {
             initWith debug
+            matchingFallbacks = ["debug"]
         }
     }
+
+    testBuildType = "staging"
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+
     sourceSets {
         staging {
             java {
@@ -46,6 +58,8 @@ dependencies {
     //Retrofit
     implementation "com.squareup.retrofit2:retrofit:${retrofitVersion}"
     implementation "com.squareup.retrofit2:converter-gson:${retrofitVersion}"
+
+    implementation "com.squareup.okhttp3:logging-interceptor:${loggingVersion}"
 
     //Google
     implementation "com.google.code.gson:gson:${gsonVersion}"

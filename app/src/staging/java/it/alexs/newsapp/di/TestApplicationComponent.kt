@@ -4,6 +4,6 @@ import dagger.Component
 import javax.inject.Singleton
 
 @Singleton
-@Component(modules = [FakeNetworkModule::class])
+@Component
 interface TestApplicationComponent: ApplicationComponent {
 }

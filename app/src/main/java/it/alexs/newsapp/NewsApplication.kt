@@ -1,6 +1,7 @@
 package it.alexs.newsapp
 
 import android.app.Application
+import it.alexs.newsapp.di.ApplicationComponent
 import it.alexs.newsapp.di.DaggerApplicationComponent
 import it.alexs.newsappcore_library.di.CoreLibraryComponent
 import it.alexs.newsappcore_library.di.DaggerCoreLibraryComponent
@@ -11,9 +12,7 @@ open class NewsApplication: Application() {
 
     override fun onCreate() {
         super.onCreate()
-        DaggerApplicationComponent.builder()
-            .coreLibraryComponent(coreLibraryComponent())
-            .build()
+        initializeComponent()
     }
 
     fun coreLibraryComponent(): CoreLibraryComponent {
@@ -23,6 +22,12 @@ open class NewsApplication: Application() {
                 .build()
         }
         return coreLibraryComponent!!
+    }
+
+    open fun initializeComponent(): ApplicationComponent {
+        return DaggerApplicationComponent.builder()
+            .coreLibraryComponent(coreLibraryComponent())
+            .build()
     }
 
 }

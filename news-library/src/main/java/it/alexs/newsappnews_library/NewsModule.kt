@@ -6,6 +6,7 @@ import it.alexs.newsappmvvm_library.scope.ModuleScope
 import it.alexs.newsappnews_library.config.AppConfig
 import it.alexs.newsappnews_library.remote.NewsApiService
 import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
@@ -20,9 +21,10 @@ class NewsModule {
                 val original = chain.request()
                 val request = original.newBuilder()
                     .addHeader("X-Api-Key", AppConfig.API_KEY)
-                    .method(original.method(), original.body())
+                    .method(original.method, original.body)
                     .build()
                 chain.proceed(request) }
+            .addInterceptor(HttpLoggingInterceptor().apply { level = HttpLoggingInterceptor.Level.BODY })
             .build()
     }
 
