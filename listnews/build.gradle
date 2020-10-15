@@ -60,6 +60,7 @@ android {
 
 dependencies {
     implementation project(path: ':app')
+    implementation project(path: ':core-library')
     implementation project(path: ':mvvm-library')
     implementation project(path: ':news-library')
     implementation project(path: ':common-library')
@@ -73,6 +74,13 @@ dependencies {
 
     implementation "com.google.dagger:dagger:${daggerVersion}"
     kapt "com.google.dagger:dagger-compiler:${daggerVersion}"
+
+    //Retrofit
+    implementation "com.squareup.retrofit2:retrofit:${retrofitVersion}"
+    implementation "com.squareup.retrofit2:converter-gson:${retrofitVersion}"
+
+    // OkHttp
+    implementation "com.squareup.okhttp3:logging-interceptor:${loggingVersion}"
 
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:${viewModelKtxVersion}"
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:${liveDataKtxVersion}"

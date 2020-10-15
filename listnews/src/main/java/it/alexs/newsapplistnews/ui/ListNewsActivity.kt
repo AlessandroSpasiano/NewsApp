@@ -25,10 +25,11 @@ class ListNewsActivity : AppCompatActivity() {
     @Inject lateinit var appViewModelFactory: ViewModelFactory
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        DaggerListNewsComponent.factory()
-            .create((applicationContext as NewsApplication).appComponent)
-            .inject(this)
         super.onCreate(savedInstanceState)
+        DaggerListNewsComponent.builder()
+            .provideCoreLibraryComponent((applicationContext as NewsApplication).coreLibraryComponent())
+            .build()
+            .inject(this)
         setContentView(binding.root)
         setRecyclerView()
     }

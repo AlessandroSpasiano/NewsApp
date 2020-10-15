@@ -1,4 +1,4 @@
-package it.alexs.newsapp.config
+package it.alexs.newsappnews_library.config
 
 object AppConfig {
 

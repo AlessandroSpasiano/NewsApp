@@ -1,3 +1,4 @@
+include ':core-library'
 include ':ui-library'
 include ':ui-library'
 include ':listnews'
