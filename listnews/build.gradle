@@ -54,6 +54,7 @@ android {
             java {
                 srcDirs 'src\\staging\\java'
             }
+            manifest.srcFile 'src/staging/AndroidManifest.xml'
         }
     }
 }
