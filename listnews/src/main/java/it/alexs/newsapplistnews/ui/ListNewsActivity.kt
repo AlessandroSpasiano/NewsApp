@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
-import it.alexs.newsapp.NewsApplication
 import it.alexs.newsappcommon_library.model.ResultWrapper
 import it.alexs.newsapplistnews.adapter.NewsAdapter
 import it.alexs.newsapplistnews.databinding.ActivityListNewsBinding
@@ -26,8 +25,7 @@ class ListNewsActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        DaggerListNewsComponent.factory()
-            .create((applicationContext as NewsApplication).appComponent)
+        DaggerListNewsComponent.create()
             .inject(this)
         setContentView(binding.root)
         setRecyclerView()
